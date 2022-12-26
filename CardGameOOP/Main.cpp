@@ -13,33 +13,71 @@ struct Card
     int value;
 };
 
-// Function prototypes
-void convert_card(Card* theCard, int theNumber);
-void get_suit(Card* theCard, int theNumber);
+// Declare a Card class
+class CardGame
+{
+public:
+    // Constructor
+    CardGame();
 
-int main() {
+    // Method to initialize a pack of cards with name, suit, and value
+    void initializeCards();
+
+    // Method to select a random card from the pack and prompt the user to guess its value
+    void playGame();
+
+private:
+    // Method to set the name and value of a card based on a randomly generated number
+    void convertCard(Card* theCard, int theNumber);
+
+    // Method to set the suit of a card based on a randomly generated number
+    void getSuit(Card* theCard, int theNumber);
+
+    vector<Card> pack; // Vector to store a dynamic array of cards
+    int num_guesses; // Counter for the number of guesses made
+};
+
+int main()
+{
     // Seed the random number generator
     srand((unsigned)time(0));
 
-    // Use a vector to create a dynamic array of cards
-    vector<Card> pack;
+    CardGame game; // Create a CardGame object
+    game.playGame(); // Play the game
+
+    return 0;
+}
+
+// Define the constructor for the CardGame class
+CardGame::CardGame()
+{
     pack.resize(52); // 52 cards in a pack
+    num_guesses = 0; // Initialize the counter to 0
+}
 
-    int guess_value;
-    int card_to_guess_num;
-    Card* card_to_guess;
-    int num_guesses = 0;
-    bool not_guessed = true;
-
+// Define the initializeCards method
+void CardGame::initializeCards()
+{
     // Give every card a name, suit, and value
     for (int i = 0; i < 52; i++)
     {
         int cardNum = (rand() % 13) + 1; // 13 possible cards
-        convert_card(&pack[i], cardNum); // Pass a pointer to the card in the vector
+        convertCard(&pack[i], cardNum); // Pass a pointer to the card in the vector
 
         int suitNum = (rand() % 4) + 1; // 4 possible suits
-        get_suit(&pack[i], suitNum); // Pass a pointer to the card in the vector
+        getSuit(&pack[i], suitNum); // Pass a pointer to the card in the vector
     }
+}
+
+// Define the playGame method
+void CardGame::playGame()
+{
+    int guess_value;
+    int card_to_guess_num;
+    Card* card_to_guess;
+    bool not_guessed = true;
+
+    initializeCards(); // Initialize the pack of cards
 
     card_to_guess_num = (rand() % 52); // Randomly select a card for the user to guess
     card_to_guess = &pack[card_to_guess_num]; // Get a pointer to the chosen card
@@ -64,13 +102,9 @@ int main() {
         }
     }
     cout << "You used " << num_guesses << " guesses." << endl;
-
-    return 0;
 }
-
-// Declare function called convert_card that takes a reference to a card object called the card
-// And an integer called thenumber as arguments
-void convert_card(Card* theCard, int theNumber)
+// Define the convertCard method
+void CardGame::convertCard(Card* theCard, int theNumber)
 {
     switch (theNumber)
     {
@@ -116,22 +150,21 @@ void convert_card(Card* theCard, int theNumber)
         break;
     case 11:
         theCard->card_name = "Jack";
-        theCard->value = 10;
+        theCard->value = 11;
         break;
     case 12:
         theCard->card_name = "Queen";
-        theCard->value = 10;
+        theCard->value = 12;
         break;
     case 13:
         theCard->card_name = "King";
-        theCard->value = 10;
+        theCard->value = 13;
         break;
     }
 }
 
-// Declare function called get_suit that takes a reference to a card object called theCard
-// And an integer called theNumber as arguments
-void get_suit(Card* theCard, int theNumber)
+// Define the getSuit method
+void CardGame::getSuit(Card* theCard, int theNumber)
 {
     switch (theNumber)
     {
