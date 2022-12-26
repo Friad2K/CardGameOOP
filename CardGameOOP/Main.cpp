@@ -66,3 +66,64 @@ int main() {
 
     return 0;
 }
+
+// Declare function called conert_card that takes a reference to a card object called the card
+// And an integer called thenumber as arguments
+void convert_card(Card& theCard, int theNumber)
+{
+    switch (theNumber)
+    {
+    case 1:
+        theCard.card_name = "Ace";
+        theCard.value = 1;
+        break;
+    case 2:
+        theCard.card_name = "2";
+        theCard.value = 2;
+        break;
+    case 3:
+        theCard.card_name = "3";
+        theCard.value = 3;
+        break;
+    case 4:
+        theCard.card_name = "4";
+        theCard.value = 4;
+        break;
+    case 5:
+        theCard.card_name = "5";
+        theCard.value = 5;
+        break;
+    case 6:
+        theCard.card_name = "6";
+        theCard.value = 6;
+        break;
+    case 7:
+        theCard.card_name = "7";
+        theCard.value = 7;
+        break;
+    case 8:
+        theCard.card_name = "8";
+        theCard.value = 8;
+        break;
+    case 9:
+        theCard.card_name = "9";
+        theCard.value = 9;
+        break;
+    case 10:
+        theCard.card_name = "10";
+        theCard.value = 10;
+        break;
+    case 11:
+        theCard.card_name = "Jack";
+        theCard.value = 10;
+        break;
+    case 12:
+        theCard.card_name = "Queen";
+        theCard.value = 11;
+        break;
+    case 13:
+        theCard.card_name = "King";
+        theCard.value = 12;
+        break;
+    }
+}
