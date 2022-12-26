@@ -67,7 +67,7 @@ int main() {
     return 0;
 }
 
-// Declare function called conert_card that takes a reference to a card object called the card
+// Declare function called convert_card that takes a reference to a card object called the card
 // And an integer called thenumber as arguments
 void convert_card(Card& theCard, int theNumber)
 {
@@ -124,6 +124,24 @@ void convert_card(Card& theCard, int theNumber)
     case 13:
         theCard.card_name = "King";
         theCard.value = 12;
+        break;
+    }
+}
+void get_suit(Card& theCard, int theNumber)
+{
+    switch (theNumber)
+    {
+    case 1:
+        theCard.suit = "Spades";
+        break;
+    case 2:
+        theCard.suit = "Hearts";
+        break;
+    case 3:
+        theCard.suit = "Clubs";
+        break;
+    case 4:
+        theCard.suit = "Diamonds";
         break;
     }
 }
